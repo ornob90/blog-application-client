@@ -6,11 +6,12 @@ import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 
 const BlogCard = ({ blog }) => {
   const { _id, title, content, thumbnail } = blog;
+
   return (
-    <div>
+    <div className="border h-[330px] rounded-md shadow-sm">
       <img
         src={thumbnail}
-        className="w-full h-[150px] rounded-t-md shadow-sm"
+        className="w-full h-[150px]  rounded-t-md shadow-sm"
       />
 
       {/* content */}
@@ -19,10 +20,12 @@ const BlogCard = ({ blog }) => {
           <h1 className="font-bold mt-2">
             {title?.split(" ").length < 3
               ? title
-              : title.split(" ").slice(0, 3).join(" ") + "..."}
+              : title.split(" ").slice(0, 3).join(" ") + ". . ."}
           </h1>
           <div className="flex i items-center gap-2 text-lg">
-            <AiFillEdit className="text-blue-700" />
+            <Link href={`/updateBlog/${_id}`}>
+              <AiFillEdit className="text-blue-700" />
+            </Link>
             <AiFillDelete className="text-red-700" />
           </div>
         </div>
@@ -30,11 +33,13 @@ const BlogCard = ({ blog }) => {
         <p className="text-[12px] mt-3 overflow-hidden">
           {content?.split(" ").length < 15
             ? content
-            : content.split(" ").slice(0, 15).join(" ")}
+            : content.split(" ").slice(0, 15).join(" ") + ". . ."}
         </p>
 
         <Link href={`/blog/${_id}`}>
-          <Button className="bg-black text-white py-2 px-4">Details</Button>
+          <Button className="bg-black text-white py-1 px-4 text-[12px]">
+            More
+          </Button>
         </Link>
       </div>
     </div>
