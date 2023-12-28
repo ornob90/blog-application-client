@@ -12,6 +12,10 @@ const Navbar = () => {
       to: "/my-blogs",
       name: "My Blogs",
     },
+    {
+      to: "/add-blogs",
+      name: "Create Blog",
+    },
   ];
 
   return (
@@ -61,7 +65,9 @@ const Navbar = () => {
               <Link href={to}>{name}</Link>
             </li>
           ))}
-          <Button className="bg-[#FF3B1D] text-white px-4 py-1">Sign Up</Button>
+          <Button className="ml-6 bg-[#FF3B1D] text-white px-4 py-1">
+            Sign Up
+          </Button>
         </div>
       </nav>
     </div>
