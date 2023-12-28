@@ -4,10 +4,7 @@ import React from "react";
 
 const BlogCard = () => {
   return (
-    <Link
-      href="/blog-details"
-      className="relative border pb-2 rounded-md shadow-sm"
-    >
+    <Link href="/blog/1" className="relative border pb-2 rounded-md shadow-sm">
       <img
         src="https://enviragallery.com/wp-content/uploads/2016/05/How-to-Fix-Missing-Post-Thumbnail-Issue-in-WordPress.png"
         className="w-full  rounded-t-md shadow-sm"

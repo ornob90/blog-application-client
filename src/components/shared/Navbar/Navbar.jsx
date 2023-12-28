@@ -13,7 +13,7 @@ const Navbar = () => {
       name: "My Blogs",
     },
     {
-      to: "/add-blogs",
+      to: "/createBlog",
       name: "Create Blog",
     },
   ];
@@ -23,11 +23,7 @@ const Navbar = () => {
       <nav className="navbar w-[90%] mx-auto max-w-[1440px]">
         <div className="navbar-start">
           <div className="dropdown md:hidden">
-            <div
-              tabIndex={0}
-              role="button"
-              className="btn btn-ghost btn-circle"
-            >
+            <div tabIndex={0} role="button" className="pr-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
