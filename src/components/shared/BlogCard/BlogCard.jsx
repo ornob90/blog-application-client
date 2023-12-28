@@ -2,24 +2,26 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const BlogCard = () => {
+const BlogCard = ({ blog }) => {
+  const { _id, title, content, thumbnail } = blog;
   return (
-    <Link href="/blog/1" className="relative border pb-2 rounded-md shadow-sm">
-      <img
-        src="https://enviragallery.com/wp-content/uploads/2016/05/How-to-Fix-Missing-Post-Thumbnail-Issue-in-WordPress.png"
-        className="w-full  rounded-t-md shadow-sm"
-      />
+    <Link
+      href={`/blog/${_id}`}
+      className="relative border pb-2 rounded-md shadow-sm"
+    >
+      <img src={thumbnail} className="w-full  rounded-t-md shadow-sm" />
 
       {/* content */}
       <div className="p-2">
         <div className="flex justify-between icon-link">
-          <h1 className="font-bold mt-2">Name Of the Blog</h1>
+          <h1 className="font-bold mt-2">{title}</h1>
           <div></div>
         </div>
 
-        <p className="text-[12px] mt-3">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit esse
-          qui magni fugiat, pariatur nisi.
+        <p className="text-[12px] mt-3 overflow-hidden">
+          {content?.split(" ").length < 15
+            ? content
+            : content.split(" ").slice(0, 15)}
         </p>
       </div>
     </Link>
