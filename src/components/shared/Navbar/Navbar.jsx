@@ -15,7 +15,7 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="border-b   bg-gray-100">
+    <div className="border-b  ">
       <nav className="navbar w-[90%] mx-auto max-w-[1440px]">
         <div className="navbar-start">
           <div className="dropdown md:hidden">

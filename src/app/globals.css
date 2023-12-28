@@ -1,10 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer {
+  .font-poppins {
+    font-family: "Poppins", sans-serif;
+  }
   .nav-button {
     position: relative;
+  }
+
+  .bg-banner {
+    background: linear-gradient(
+        to right,
+        rgb(214 214 214 / 84%),
+        rgb(0 0 0 / 0%)
+      ),
+      url("https://as1.ftcdn.net/v2/jpg/02/22/10/22/1000_F_222102223_rTf36xg0GGGCewL8YLZKZvJ85PIqID80.jpg");
+    background-size: cover;
+    background-position: center;
   }
 
   .nav-button:after {
