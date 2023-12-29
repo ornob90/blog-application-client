@@ -14,18 +14,23 @@ A simple blog application built with Next.js, Express, Mongoose, and Tailwind CS
 
 1. **Clone the Repository:**
    ```
-   git clone https://github.com/your-username/nextjs-express-blog.git
+   git clone https://github.com/ornob90/blog-application-client.git
+   ```
+
+2. Go to the folter
+
+   ```
    cd nextjs-express-blog
    ```
     
-2. **Install Node**
+3. **Install Node**
 
-```
-  npm install
-```
+ ```
+   npm install
+ ```
 
-3. Run the project locally
+4. Run the project locally
 
-```
- npm run dev
-```
+ ```
+  npm run dev
+ ```
