@@ -14,12 +14,13 @@ const BlogDetails = async ({ params }) => {
     <Container className="w-[85%] sm:w-[70%] md:w-[60%] min-h-[500px] ">
       {/* Header */}
       <div className="mt-10 mb-5 ">
-        <h1 className="text-xl sm:text-2xl md:text-3xl  font-bold">{title}</h1>
+        <h1 className="text-xl font-bold sm:text-2xl md:text-3xl">{title}</h1>
         {/* <p className="text-light text-[12px]">Created 10 days ago</p> */}
       </div>
 
       <Image
         src={thumbnail}
+        alt={title}
         width={0}
         height={0}
         style={{ width: "100%" }}
@@ -27,7 +28,7 @@ const BlogDetails = async ({ params }) => {
       />
 
       {/* Content */}
-      <p className="mt-10 text-sm leading-relaxed mb-16">
+      <p className="mt-10 mb-16 text-sm leading-relaxed">
         {[1, 2, 3, 4].map((value) => (
           <span key={value}>{content}</span>
         ))}

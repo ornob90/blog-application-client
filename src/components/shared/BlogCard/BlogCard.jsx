@@ -31,20 +31,31 @@ const BlogCard = ({ blog }) => {
 
   return (
     <div className="border h-[330px] rounded-md shadow-sm">
-      <img
+      {/* <img
         src={thumbnail}
+        alt={title}
         className="w-full h-[150px]  rounded-t-md shadow-sm"
+      /> */}
+
+      <Image
+        src={thumbnail}
+        alt={title}
+        width={0}
+        height={0}
+        style={{ width: "100%", height: "150px" }}
+        unoptimized
+        className="shadow-sm rounded-t-md"
       />
 
       {/* content */}
       <div className="p-2 flex flex-col  justify-between h-[170px]">
         <div className="flex justify-between icon-link">
-          <h1 className="font-bold mt-2">
+          <h1 className="mt-2 font-bold">
             {title?.split(" ").length < 3
               ? title
               : title.split(" ").slice(0, 3).join(" ") + ". . ."}
           </h1>
-          <div className="flex i items-center gap-2 text-lg">
+          <div className="flex items-center gap-2 text-lg i">
             <Link href={`/updateBlog/${_id}`}>
               <AiFillEdit className="text-blue-700" />
             </Link>

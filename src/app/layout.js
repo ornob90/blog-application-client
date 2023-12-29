@@ -1,3 +1,4 @@
+import Footer from "@/components/shared/Footer/Footer";
 import "./globals.css";
 import Navbar from "@/components/shared/Navbar/Navbar";
 
@@ -11,8 +12,8 @@ export default function RootLayout({ children }) {
     <html lang="en" data-theme="light">
       <body className={" max-w-[1400px] mx-auto font-poppins"}>
         <Navbar />
-
         {children}
+        <Footer />
       </body>
     </html>
   );

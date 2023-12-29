@@ -3,6 +3,7 @@
 import Button from "@/components/html/Button";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+
 import React from "react";
 
 const Navbar = () => {
@@ -49,7 +50,7 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
               {navItems?.map(({ name, to }) => (
-                <li>
+                <li key={name}>
                   <Link href={to}>{name}</Link>
                 </li>
               ))}
@@ -63,6 +64,7 @@ const Navbar = () => {
         <div className="navbar-end gap-4 text-sm">
           {navItems?.map(({ name, to }) => (
             <li
+              key={name}
               className={`list-none nav-button hidden md:block ${
                 pathname === to
                   ? "text-secondary border-b border-b-secondary"
