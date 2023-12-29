@@ -7,7 +7,7 @@ import React from "react";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 import Swal from "sweetalert2";
 
-const BlogCard = ({ blog }) => {
+const BlogCard = ({ blog, setBlogPosts }) => {
   const { _id, title, content, thumbnail } = blog;
 
   const router = useRouter();
@@ -25,6 +25,9 @@ const BlogCard = ({ blog }) => {
     if (result.isConfirmed) {
       const response = await deleteSingleBlog(_id);
       console.log(response);
+
+      setBlogPosts((prev) => prev.filter(({ _id: blogId }) => blogId !== _id));
+
       router.push("/", undefined, { shallow: true });
     }
   };
