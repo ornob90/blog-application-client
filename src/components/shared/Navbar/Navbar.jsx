@@ -1,17 +1,22 @@
+"use client";
+
 import Button from "@/components/html/Button";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React from "react";
 
 const Navbar = () => {
+  const pathname = usePathname();
+  //   console.log(pathname);
   const navItems = [
     {
       to: "/",
       name: "Home",
     },
-    {
-      to: "/my-blogs",
-      name: "My Blogs",
-    },
+    // {
+    //   to: "/my-blogs",
+    //   name: "My Blogs",
+    // },
     {
       to: "/createBlog",
       name: "Create Blog",
@@ -57,7 +62,13 @@ const Navbar = () => {
 
         <div className="navbar-end gap-4 text-sm">
           {navItems?.map(({ name, to }) => (
-            <li className="list-none nav-button hidden md:block">
+            <li
+              className={`list-none nav-button hidden md:block ${
+                pathname === to
+                  ? "text-secondary border-b border-b-secondary"
+                  : ""
+              }`}
+            >
               <Link href={to}>{name}</Link>
             </li>
           ))}

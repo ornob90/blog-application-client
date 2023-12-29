@@ -1,11 +1,33 @@
 import Button from "@/components/html/Button";
+import deleteSingleBlog from "@/utils/deleteSingleBlog";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
+import Swal from "sweetalert2";
 
 const BlogCard = ({ blog }) => {
   const { _id, title, content, thumbnail } = blog;
+
+  const router = useRouter();
+
+  const handleDelete = async () => {
+    const result = await Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    });
+    if (result.isConfirmed) {
+      const response = await deleteSingleBlog(_id);
+      console.log(response);
+      router.push("/", undefined, { shallow: true });
+    }
+  };
 
   return (
     <div className="border h-[330px] rounded-md shadow-sm">
@@ -26,7 +48,7 @@ const BlogCard = ({ blog }) => {
             <Link href={`/updateBlog/${_id}`}>
               <AiFillEdit className="text-blue-700" />
             </Link>
-            <AiFillDelete className="text-red-700" />
+            <AiFillDelete onClick={handleDelete} className="text-red-700" />
           </div>
         </div>
 
