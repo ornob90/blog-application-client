@@ -3,6 +3,15 @@ import getSingleBlog from "@/utils/getSingleBlog";
 import Image from "next/image";
 import React from "react";
 
+export const generateMetadata = async ({ params: { blogId } }) => {
+  const { blogPost: blog } = await getSingleBlog(blogId);
+
+  return {
+    title: blog.title,
+    description: blog.content,
+  };
+};
+
 const BlogDetails = async ({ params }) => {
   const { blogId } = params;
 
