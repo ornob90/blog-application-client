@@ -1,4 +1,5 @@
 import Container from "@/components/shared/Container/Container";
+import getAllBlogs from "@/utils/getAllBlogs";
 import getSingleBlog from "@/utils/getSingleBlog";
 import Image from "next/image";
 import React from "react";
@@ -10,6 +11,12 @@ export const generateMetadata = async ({ params: { blogId } }) => {
     title: blog.title,
     description: blog.content,
   };
+};
+
+export const generateStaticParams = async () => {
+  const { blogPosts } = await getAllBlogs();
+
+  return blogPosts.map(({ _id }) => ({ blogId: _id }));
 };
 
 const BlogDetails = async ({ params }) => {
