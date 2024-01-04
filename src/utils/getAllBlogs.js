@@ -4,7 +4,7 @@ const getAllBlogs = async () => {
   try {
     const res = await fetch(BASE_URL + "/blogs", {
       next: {
-        revalidate: 5,
+        revalidate: 3600,
       },
     });
     return res.json();

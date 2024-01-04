@@ -2,6 +2,7 @@ import Container from "@/components/shared/Container/Container";
 import SectionHeader from "@/components/shared/SectionHeader/SectionHeader";
 import React from "react";
 import Blogs from "./Blogs";
+import getAllBlogs from "@/utils/getAllBlogs";
 
 const AllBlogs = () => {
   return (
