@@ -25,6 +25,7 @@ const useCurrentLocation = () => {
         setLocation({
           country: response?.data[0]?.country,
           city: response?.data[0]?.name,
+          ...response,
         });
       } catch (error) {
         console.log(error.message);
@@ -38,4 +39,3 @@ const useCurrentLocation = () => {
 };
 
 export default useCurrentLocation;
-
