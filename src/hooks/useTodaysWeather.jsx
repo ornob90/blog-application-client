@@ -21,7 +21,7 @@ const useTodaysWeather = () => {
 
       // setTodaysWeather(response);
 
-      console.log(response);
+      // console.log(response);
 
       const weatherData = {
         temperature: +(response?.main?.feels_like - 273.15).toFixed(2),
@@ -32,6 +32,8 @@ const useTodaysWeather = () => {
         sunset: convertTo12HourFormat(response?.sys?.sunset),
         wind_speed: response?.wind?.speed,
       };
+
+      console.log(weatherData);
 
       setTodaysWeather(weatherData);
     };

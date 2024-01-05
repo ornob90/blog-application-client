@@ -9,7 +9,7 @@ const Location = () => {
 
   const response = useTodaysWeather();
 
-  console.log(response);
+  // console.log(response);
 
   return <div className="text-8xl font-bold">Location</div>;
 };
