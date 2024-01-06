@@ -1,5 +1,6 @@
 "use client";
 import useCurrentLocation from "@/hooks/useCurrentLocation";
+import useHourlyWeather from "@/hooks/useHourlyWeather";
 import useTodaysWeather from "@/hooks/useTodaysWeather";
 import React from "react";
 
@@ -9,9 +10,10 @@ const Location = () => {
 
   const response = useTodaysWeather();
 
-  // console.log(response);
+  // const response = useHourlyWeather();
+  console.log(response);
 
-  return <div className="text-8xl font-bold">Location</div>;
+  return <div className="text-2xl font-bold">Location</div>;
 };
 
 export default Location;

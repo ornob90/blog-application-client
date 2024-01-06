@@ -2,6 +2,8 @@
 
 import convertTo12HourFormat from "@/utils/date/convertTo12HourFormat";
 import getCoordinates from "@/utils/openweathermap/getCoordinates";
+import convertKelvinToCelsius from "@/utils/units/convertKelvinToCelsius";
+import convertToKmPerHour from "@/utils/units/convertToKmPerHour";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -24,16 +26,16 @@ const useTodaysWeather = () => {
       // console.log(response);
 
       const weatherData = {
-        temperature: +(response?.main?.feels_like - 273.15).toFixed(2),
-        temp_max: response?.main?.temp_max,
-        temp_min: response?.main?.temp_min,
+        temperature: convertKelvinToCelsius(response?.main?.feels_like),
+        temp_max: convertKelvinToCelsius(response?.main?.temp_max),
+        temp_min: convertKelvinToCelsius(response?.main?.temp_min),
         humidity: response?.main?.humidity,
         sunrise: convertTo12HourFormat(response?.sys?.sunrise),
         sunset: convertTo12HourFormat(response?.sys?.sunset),
-        wind_speed: response?.wind?.speed,
+        wind_speed: convertToKmPerHour(response?.wind?.speed), // m/s to km/h convert
       };
 
-      console.log(weatherData);
+      // console.log(weatherData);
 
       setTodaysWeather(weatherData);
     };
