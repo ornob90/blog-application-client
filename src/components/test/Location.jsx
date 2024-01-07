@@ -11,7 +11,7 @@ const Location = () => {
   // const response = useTodaysWeather();
 
   const response = useHourlyWeather();
-  console.log(response);
+  // console.log(response);
 
   return <div className="text-2xl font-bold">Location</div>;
 };
