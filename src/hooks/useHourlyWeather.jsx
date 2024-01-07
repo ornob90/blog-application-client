@@ -1,8 +1,7 @@
 "use client";
 
+import formatHourlyData from "@/utils/openweathermap/formatHourlyData";
 import getCoordinates from "@/utils/openweathermap/getCoordinates";
-import convertKelvinToCelsius from "@/utils/units/convertKelvinToCelsius";
-import convertToKmPerHour from "@/utils/units/convertToKmPerHour";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -20,14 +19,9 @@ const useHourlyWeather = () => {
           `?lat=${latitude}&lon=${longitude}&appid=${process.env.NEXT_PUBLIC_API_KEY}`
       );
 
-      const hourlyWeatherData = response?.list?.map((weather) => ({
-        temperature: convertKelvinToCelsius(weather?.main?.feels_like),
-        temp_max: convertKelvinToCelsius(weather?.main?.temp_max),
-        temp_min: convertKelvinToCelsius(weather?.main?.temp_min),
-        humidity: weather?.main?.humidity,
-        precipitation: weather?.pop,
-        wind_speed: convertToKmPerHour(weather?.wind?.speed),
-      }));
+      // console.log(response);
+
+      const hourlyWeatherData = formatHourlyData(response);
 
       setHourlyWeather(hourlyWeatherData);
     };
