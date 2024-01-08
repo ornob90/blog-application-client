@@ -3,15 +3,15 @@ import convertToDate from "../date/convertToDate";
 import convertKelvinToCelsius from "../units/convertKelvinToCelsius";
 import convertToKmPerHour from "../units/convertToKmPerHour";
 
-const formatHourlyData = (response) => {
+const formatHourlyData = (weatherData) => {
   let day = 0;
   const dayToShow = ["Today", "Tomorrow"];
 
-  const hourlyWeatherData = response?.list?.map((weather, idx) => {
+  const hourlyWeatherData = weatherData?.map((weather, idx) => {
     if (
       idx > 0 &&
-      convertToDate(response?.list[idx]?.dt) !==
-        convertToDate(response?.list[idx - 1]?.dt)
+      convertToDate(weatherData[idx]?.dt) !==
+        convertToDate(weatherData[idx - 1]?.dt)
     ) {
       day++;
     }

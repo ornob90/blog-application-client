@@ -19,7 +19,7 @@ const useCurrentLocation = () => {
 
         // Fetch the current location
         const response = await axios.get(
-          `${OPEN_WEATHER_BASE_URL}lat=${latitude}&lon=${longitude}&limit=5&appid=${process.env.NEXT_PUBLIC_API_KEY}`
+          `${OPEN_WEATHER_BASE_URL}/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=5&appid=${process.env.NEXT_PUBLIC_API_KEY}`
         );
 
         setLocation({

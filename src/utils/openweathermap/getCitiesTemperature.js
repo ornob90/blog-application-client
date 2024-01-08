@@ -1,8 +1,7 @@
+import { GEO_LOCATION_BASE_URL, OPEN_WEATHER_BASE_URL } from "@/api/api";
 import axios from "axios";
 
-const GEO_LOCATION_BASE_URL = `http://api.openweathermap.org/geo/1.0/direct`;
-
-const CUR_WEATHER_BASE_URL = "https://api.openweathermap.org/data/2.5/weather";
+// const CUR_WEATHER_BASE_URL = "https://api.openweathermap.org/data/2.5/weather";
 
 const getCitiesTemperature = async (cities = []) => {
   const results = [];
@@ -18,12 +17,13 @@ const getCitiesTemperature = async (cities = []) => {
     // console.log({ lat, lon });
 
     const { data: response } = await axios.get(
-      CUR_WEATHER_BASE_URL +
-        `?lat=${lat}&lon=${lon}&units=metric&appid=${process.env.NEXT_PUBLIC_API_KEY}`
+      OPEN_WEATHER_BASE_URL +
+        `/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${process.env.NEXT_PUBLIC_API_KEY}`
     );
 
     results.push({
-      [city]: response?.main?.temp,
+      temperature: response?.main?.temp,
+      city,
     });
   }
 

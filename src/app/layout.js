@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/shared/Navbar/Navbar";
 
 export const metadata = {
+  metadataBase: new URL("http://localhost:3000"),
   title: {
     default: "Blog Application",
     template: "%s | Blog Application",

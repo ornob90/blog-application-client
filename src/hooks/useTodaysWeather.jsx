@@ -1,5 +1,6 @@
 "use client";
 
+import { OPEN_WEATHER_BASE_URL } from "@/api/api";
 import convertTo12HourFormat from "@/utils/date/convertTo12HourFormat";
 import getCoordinates from "@/utils/openweathermap/getCoordinates";
 import convertKelvinToCelsius from "@/utils/units/convertKelvinToCelsius";
@@ -7,7 +8,7 @@ import convertToKmPerHour from "@/utils/units/convertToKmPerHour";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const BASE_URL = "https://api.openweathermap.org/data/2.5/weather";
+// const BASE_URL = "https://api.openweathermap.org/data/2.5/weather";
 
 const useTodaysWeather = () => {
   const [todaysWeather, setTodaysWeather] = useState({});
@@ -17,8 +18,8 @@ const useTodaysWeather = () => {
       const { latitude, longitude } = await getCoordinates();
 
       const { data: response } = await axios.get(
-        BASE_URL +
-          `?lat=${latitude}&lon=${longitude}&appid=${process.env.NEXT_PUBLIC_API_KEY}`
+        OPEN_WEATHER_BASE_URL +
+          `/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.NEXT_PUBLIC_API_KEY}`
       );
 
       // setTodaysWeather(response);
