@@ -2,6 +2,8 @@
 
 import { OPEN_WEATHER_BASE_URL } from "@/api/api";
 import convertTo12HourFormat from "@/utils/date/convertTo12HourFormat";
+import convertToDate from "@/utils/date/convertToDate";
+import getPartOfDay from "@/utils/date/getPartOfDay";
 import getCoordinates from "@/utils/openweathermap/getCoordinates";
 import convertKelvinToCelsius from "@/utils/units/convertKelvinToCelsius";
 import convertToKmPerHour from "@/utils/units/convertToKmPerHour";
@@ -22,6 +24,7 @@ const useTodaysWeather = () => {
           `/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.NEXT_PUBLIC_API_KEY}`
       );
 
+      const date = convertToDate(Math.floor(new Date().getTime() / 1000));
       // setTodaysWeather(response);
 
       // console.log(response);
@@ -34,6 +37,8 @@ const useTodaysWeather = () => {
         sunrise: convertTo12HourFormat(response?.sys?.sunrise),
         sunset: convertTo12HourFormat(response?.sys?.sunset),
         wind_speed: convertToKmPerHour(response?.wind?.speed), // m/s to km/h convert
+        date,
+        partOfDay: getPartOfDay(),
       };
 
       // console.log(weatherData);

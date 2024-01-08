@@ -1,12 +1,17 @@
+import convertToDate from "../date/convertToDate";
+import getPartOfDay from "../date/getPartOfDay";
 import getTomorrowCurrentTimeUTC_Stamp from "../date/getTomorrowCurrentTimeUTC_Stamp";
 import convertKelvinToCelsius from "../units/convertKelvinToCelsius";
 import convertToKmPerHour from "../units/convertToKmPerHour";
 
 const formatTomorrowData = (weatherData) => {
-  const curTime = getTomorrowCurrentTimeUTC_Stamp();
+  const curTimeOfTomorrow = getTomorrowCurrentTimeUTC_Stamp();
 
   const tomorrowWeatherData = weatherData.find((weather, idx) => {
-    return curTime >= weather.dt && curTime < weatherData[idx + 1].dt;
+    return (
+      curTimeOfTomorrow >= weather.dt &&
+      curTimeOfTomorrow < weatherData[idx + 1].dt
+    );
   });
 
   return {
@@ -16,6 +21,10 @@ const formatTomorrowData = (weatherData) => {
     humidity: tomorrowWeatherData?.main?.humidity,
     precipitation: tomorrowWeatherData?.pop,
     wind_speed: convertToKmPerHour(tomorrowWeatherData?.wind?.speed), // m/s to km/h convert
+    date: convertToDate(tomorrowWeatherData?.dt),
+    partOfDay: getPartOfDay(),
+    sunrise: "",
+    sunset: "",
   };
 };
 
