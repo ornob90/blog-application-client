@@ -10,9 +10,9 @@ const Location = () => {
 
   // const response = useTodaysWeather();
 
-  const response = useTomorrowHourlyWeather("tomorrow");
+  const response = useTomorrowHourlyWeather("tomorrow-weather");
 
-  // console.log(response);
+  console.log(response);
 
   return <div className="text-2xl font-bold">Location</div>;
 };

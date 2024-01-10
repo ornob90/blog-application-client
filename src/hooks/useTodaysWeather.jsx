@@ -5,6 +5,7 @@ import convertTo12HourFormat from "@/utils/date/convertTo12HourFormat";
 import convertToDate from "@/utils/date/convertToDate";
 import getPartOfDay from "@/utils/date/getPartOfDay";
 import getCoordinates from "@/utils/openweathermap/getCoordinates";
+import hasCoordinatesChanges from "@/utils/openweathermap/hasCoordinatesChanges";
 import convertKelvinToCelsius from "@/utils/units/convertKelvinToCelsius";
 import convertToKmPerHour from "@/utils/units/convertToKmPerHour";
 import axios from "axios";
@@ -18,6 +19,20 @@ const useTodaysWeather = () => {
   useEffect(() => {
     const getTodaysData = async () => {
       const { latitude, longitude } = await getCoordinates();
+
+      const hasChanged = await hasCoordinatesChanges(
+        latitude,
+        longitude,
+        "todays-weather"
+      );
+
+      if (hasChanged.status) {
+        // console.log("not hit APi todays weather");
+        // console.log(hasChanged.data);
+        return setTodaysWeather(hasChanged.data);
+      }
+
+      console.log("hit API of todays weather");
 
       const { data: response } = await axios.get(
         OPEN_WEATHER_BASE_URL +
@@ -40,6 +55,15 @@ const useTodaysWeather = () => {
         date,
         partOfDay: getPartOfDay(),
       };
+
+      localStorage.setItem(
+        "todays-weather",
+        JSON.stringify({
+          data: weatherData,
+          lat: latitude,
+          lon: longitude,
+        })
+      );
 
       // console.log(weatherData);
 

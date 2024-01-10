@@ -20,3 +20,33 @@ function getPartOfDay() {
 }
 
 export default getPartOfDay;
+
+const city = [
+  "Ghaziabad",
+  "Nanital",
+  "Kullu",
+  "Nagpur",
+  "Ooty",
+  "Haridwar",
+  "Assam",
+  "Patna",
+  "Noida",
+  "Chandigarh",
+  "Jaipur",
+  "Lucknow",
+  "Shimla",
+  "Kolkata",
+  "Pune",
+  "Chennai",
+  "Mumbai",
+  "Bangalore",
+  "Delhi",
+  "Muzaffarnagar",
+  "Meerut",
+  "Srinagar",
+  "Chhattisgarh",
+  "Ludhiana",
+  "Manali",
+  "Gulmarg",
+  "Bihar",
+];
