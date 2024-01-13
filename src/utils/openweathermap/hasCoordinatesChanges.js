@@ -1,4 +1,5 @@
 const hasCoordinatesChanges = async (latitude, longitude, key) => {
+    
   if (!latitude || !longitude || !key) {
     return {
       status: false,
